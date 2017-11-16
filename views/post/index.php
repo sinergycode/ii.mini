@@ -1,0 +1,2 @@
+<h1>Index Action</h1>
+

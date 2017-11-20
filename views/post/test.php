@@ -2,6 +2,7 @@
 use yii\widgets\ActiveForm; 
 // use yii\widgets\ActiveField; // почему работает без него
 use yii\helpers\Html; 
+use mihaildev\ckeditor\CKEditor;
 ?>
 <h1>Test action</h1>
 
@@ -22,7 +23,16 @@ use yii\helpers\Html;
 <?php $form = ActiveForm::begin(['options' => ['id' => 'testForm']]); ?>
 <?= $form->field($model, 'name'); ?>
 <?= $form->field($model, 'email')->input('email'); ?>
-<?= $form->field($model, 'text')->textarea(['rows' => 5]); ?>
+<?= yii\jui\DatePicker::widget(['name' => 'attributeName']) ?>
+<?=
+$form->field($model, 'text')->widget(CKEditor::className(),[
+    'editorOptions' => [
+        'preset' => 'full', //разработанны стандартные настройки basic, standard, (не обязательно использовать)
+        'inline' => false, //по умолчанию false
+    ],
+]);
+?>
+<?php // $form->field($model, 'text')->textarea(['rows' => 5]); ?>
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']); ?>
 <?php ActiveForm::end(); ?>
 

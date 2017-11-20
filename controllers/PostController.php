@@ -27,12 +27,9 @@ class PostController extends AppController {
             debug(Yii::$app->request->post());
             return 'test';
         }
+        TestForm::deleteAll(['>', 'id', 3]);
         
         $model = new TestForm(); 
-//        $model->name = 'Автор';
-//        $model->email = '111';
-//        $model->text = 'Текст сообщения';
-//        $model->save();
 
         if($model->load(Yii::$app->request->post())){
             if($model->save()) {
